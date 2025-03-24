@@ -8,18 +8,13 @@ class ApiController {
       
       // Return all items if search is empty
       if (!name || name.trim() === '') {
-// <<<<<<< HEAD
         const query = `SELECT name, image_url, image_url_2, price_per_unit, description FROM items`;
         const [items] = await pool.query(query);
-// =======
-        // const query = `SELECT name, image_url, price_per_unit FROM items`;
-        // const [items] = await pool.query(query);
-// >>>>>>> 67fd436 (Public folder added)
         
         return res.status(200).json({
           success: true,
-          // count: items.length,
-          data: 'Enter the item to search'
+          count: items.length,
+          data: items
         });
       }
       

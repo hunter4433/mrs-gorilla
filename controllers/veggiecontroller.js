@@ -6,17 +6,6 @@ class CategoryController {
     try {
       // Extract category from request body
       const { category } = req.body;
-       // Return all items if search is empty
-       if (!category  || category.trim() === '') {
-        const query = `SELECT name, image_url, price_per_unit, unit, description FROM items`;
-        const [items] = await pool.query(query);
-       
-       return res.status(200).json({
-         success: true,
-         count: items.length,
-         data: items
-       });
-     }
 
       console.log(category);
 
